@@ -12,7 +12,7 @@ public class IOCTest {
 
     @Test
     public void test01(){
-        //IOC容器
+        //IOC容器 测试一下
        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfig.class);
         String[] beanDefinitionNames = applicationContext.getBeanDefinitionNames();
         for (String beanDefinitionName : beanDefinitionNames) {
