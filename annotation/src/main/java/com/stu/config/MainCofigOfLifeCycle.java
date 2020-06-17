@@ -2,6 +2,7 @@ package com.stu.config;
 
 import com.stu.bean.Car;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
@@ -10,11 +11,16 @@ import org.springframework.context.annotation.Import;
  * 创建--初始化--销毁
  *
  *
- * 创建：
+ * 构造（对象创建）：
  *          单实例：容器启动的时候创建
  *          多实例：每次获取的时候创建对下
+ *
+ * postProcessBeforeInitialization
+
  * 初始化：
  *          对象创建完成，调用初始化
+ *
+ *  postProcessAfterInitialization
  * 销毁：
  *          单实例：容器关闭的时候
  *          多实例：容器不会调用销毁方法
@@ -28,10 +34,13 @@ import org.springframework.context.annotation.Import;
  *
  * 3)、@PostConstruct初始化  @PreDestroy
  *
- *
+ *4）、BeanPostProcessor:
+ *      1.postProcessBeforeInitialization
+ *      2.postProcessAfterInitialization
  */
 @Configuration
 @Import({Car.class})
+@ComponentScan("com.stu")
 public class MainCofigOfLifeCycle {
     @Bean(initMethod = "init",destroyMethod = "destroy")
     public Car car(){
