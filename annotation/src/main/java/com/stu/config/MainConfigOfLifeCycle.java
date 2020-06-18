@@ -1,8 +1,9 @@
 package com.stu.config;
 
 import com.stu.bean.Car;
+import com.stu.bean.Cat;
+import com.stu.bean.MyBeanPostProcessor;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -33,7 +34,8 @@ import org.springframework.context.annotation.Configuration;
  *
  * 3)、@PostConstruct初始化  @PreDestroy
  *
- *4）、BeanPostProcessor:
+ * 4）@BeanPostProcessor:bean后置处理器
+ *      在bean初始化化前后进行一些处理工作
  *      1.postProcessBeforeInitialization
  *      2.postProcessAfterInitialization
  *
