@@ -1,9 +1,8 @@
 package com.stu.config;
 
 import com.stu.bean.Car;
-import com.stu.bean.Cat;
-import com.stu.bean.MyBeanPostProcessor;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
