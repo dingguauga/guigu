@@ -7,7 +7,8 @@ import org.springframework.context.annotation.ImportBeanDefinitionRegistrar;
 import org.springframework.core.type.AnnotationMetadata;
 
 /**
- * 自定义规则注册bean
+ * 自定义规则
+ * 注册bean
  */
 public class MyImportBeanDefinitionRegistrar implements ImportBeanDefinitionRegistrar {
     public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
