@@ -4,7 +4,6 @@ import com.stu.bean.Car;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 
 /**
  * bean生命周期：
@@ -37,11 +36,15 @@ import org.springframework.context.annotation.Import;
  *4）、BeanPostProcessor:
  *      1.postProcessBeforeInitialization
  *      2.postProcessAfterInitialization
+ *
+ *  如何读取源码？
+ *  先看什么后看什么？
  */
+
 @Configuration
-@Import({Car.class})
-@ComponentScan("com.stu")
-public class MainCofigOfLifeCycle {
+@ComponentScan(basePackages = "com.stu")
+
+public class MainConfigOfLifeCycle {
     @Bean(initMethod = "init",destroyMethod = "destroy")
     public Car car(){
         return new Car();
