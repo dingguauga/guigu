@@ -25,7 +25,7 @@ import java.beans.PropertyVetoException;
 @EnableTransactionManagement
 @ComponentScan("com.stu.tx.*")
 @Configuration
-public class TxCinfig {
+public class TxConfig {
 
     @Bean
     public DataSource dataSource() throws PropertyVetoException {

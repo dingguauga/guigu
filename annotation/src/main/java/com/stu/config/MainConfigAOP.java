@@ -230,6 +230,31 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
  * 拦截器链的机制来保证通知方法和目标方法的执行顺序。
  *
  *
+ * 总结：
+ *      1）@EnableAspectJAutoProxy开启AOP功能
+ *      2）@EnableAspectJAutoProxy会给容器注册一个组件AnnotationAwareAspectJAutoProxyCreator
+ *      3）AnnotationAwareAspectJAutoProxyCreator是一个后置处理器
+ *      4）容器的创建流程
+ *          1）// Register bean processors that intercept bean creation.
+ * 				registerBeanPostProcessors(beanFactory);注册后置处理器，创建AnnotationAwareAspectJAutoProxyCreator
+ * 			2）// Instantiate all remaining (non-lazy-init) singletons.
+ * 				finishBeanFactoryInitialization(beanFactory);初始化剩下的单实例bean
+ * 			   1）创建业务逻辑组件MathCalculator和切面组件LogAspects
+ * 			   2）AnnotationAwareAspectJAutoProxyCreator拦截组件的创建过程
+ * 			   3）组件创建完成判断组件是否需要增强wrapIfNecessary
+ * 			        是：切面的通知方法，包装成增强器(Advisor),给业务逻辑组件创建一个动态代理对象（cglib）
+ * 		5)执行目标方法：
+ * 	        1）代理对象执行目标方法
+ * 	        2）CglibAopProxy.intercept()
+ * 	            1）得到目标方法的拦截器链（增强器包Advisor装成拦截器MethodInterceptor机制）
+ * 	            2）利用拦截器的链式机制，依次进入每一个拦截器进行执行
+ * 	            3）效果：
+ * 	                前置通知=>目标方法=>后置通知=>返回通知
+ * 	                前置通知=>目标方法=>后置通知=>异常通知
+ * 	     后面多自己练习走几遍
+ *
+ *
+ *
  *
  *
  */
