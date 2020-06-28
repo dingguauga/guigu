@@ -73,13 +73,13 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
  *          beanFactory.addBeanPostProcessor
  *===================================以上是创建和注册AnnotationAwareAspectJAutoProxyCreator的过程========================
  *
- * AnnotationAwareAspectJAutoProxyCreator是一个InstantiationAwareBeanPostProcessor会在r任何bean创建之前先尝试返回bean的实例
+ * AnnotationAwareAspectJAutoProxyCreator是一个InstantiationAwareBeanPostProcessor会在任何bean创建之前先尝试返回bean的实例
  *
  * 4.finishBeanFactoryInitialization完成BeanFactory初始化工作；创建剩下的单实例
- *      1.遍历获取容器中所有的Bean。依次创建对象getBean（beanName）
+ *      1.遍历获取容器中所有的Bean 。依次创建对象getBean（beanName）
  *      2.创建bean
  *          1）、先从缓存获取bean如果存在则不创建
- *          2）createBean():创建bean，AnnotationAwareAspectJAutoProxyCreator会在r任何bean创建之前先尝试返回bean的实例
+ *          2）createBean():创建bean，AnnotationAwareAspectJAutoProxyCreator会在任何bean创建之前先尝试返回bean的实例
  *          【BeanPostProcessor是在Bean对象创建完成初始化前后调用的】
  *          【InstantiationAwareBeanPostProcessor是在创建bean实例之前先尝试用后置处理器返回对象的】
  *              1)、resolveBeforeInstantiation()
